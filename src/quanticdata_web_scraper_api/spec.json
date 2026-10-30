@@ -1,0 +1,256 @@
+{
+ "cli": "web-scraper",
+ "name": "Web Scraper API",
+ "version": "0.1.0",
+ "description": "Web scraper API for Python and the command line: any page to clean Markdown, HTML or text, every URL of a site from its sitemaps, and full site crawls to Markdown for LLMs and RAG. Free and open source; sign in with your QuanticData account, no proxies or headless browser to run.",
+ "links": {
+  "repo": "https://github.com/quantumproxies/web-scraper-api",
+  "page": "https://quanticdata.io/web-scraping-api/?utm_source=github&utm_medium=cli&utm_campaign=web-scraper-api",
+  "billing": "https://app.quanticdata.io/billing?utm_source=github&utm_medium=cli&utm_campaign=web-scraper-api",
+  "pricing": "https://quanticdata.io/pricing/?utm_source=github&utm_medium=cli&utm_campaign=web-scraper-api"
+ },
+ "commands": [
+  {
+   "name": "scrape",
+   "collector": null,
+   "method": "scrape",
+   "help": "one page as Markdown, HTML or text",
+   "endpoint": "scrape",
+   "fixed": {},
+   "rows_key": null,
+   "row_field": "value",
+   "description": "One web page as clean Markdown (or HTML or text), with its title, canonical URL, language and status. Navigation, footers and cookie banners are left out by default.",
+   "positional": "url",
+   "positional_is_list": false,
+   "positional_optional": false,
+   "columns": [
+    "url",
+    "status",
+    "title",
+    "bytes"
+   ],
+   "sample": "scrape_wikipedia",
+   "inputs": [
+    {
+     "name": "url",
+     "type": "string",
+     "required": true,
+     "description": "The page to read, e.g. https://en.wikipedia.org/wiki/Web_scraping.",
+     "arg": "url"
+    },
+    {
+     "name": "format",
+     "type": "string",
+     "required": false,
+     "description": "markdown (default), html or text.",
+     "enum": [
+      "markdown",
+      "html",
+      "text",
+      "raw"
+     ],
+     "default": "markdown",
+     "arg": "content_format"
+    },
+    {
+     "name": "contentMode",
+     "type": "string",
+     "required": false,
+     "description": "smart (whole page minus navigation and footer, the default), article (main article only) or full (entire body).",
+     "enum": [
+      "smart",
+      "article",
+      "full"
+     ],
+     "default": "smart",
+     "arg": "content_mode"
+    },
+    {
+     "name": "render",
+     "type": "boolean",
+     "required": false,
+     "description": "Run the page in a headless browser so its JavaScript executes; billed at the render rate.",
+     "default": false,
+     "arg": "render"
+    },
+    {
+     "name": "country",
+     "type": "string",
+     "required": false,
+     "description": "",
+     "arg": "country"
+    },
+    {
+     "name": "max_tokens",
+     "type": "integer",
+     "required": false,
+     "min": 200,
+     "max": 2000000,
+     "description": "Cut the Markdown at about this many tokens, at a section boundary.",
+     "arg": "max_tokens"
+    },
+    {
+     "name": "query",
+     "type": "string",
+     "required": false,
+     "description": "Keep only the sections of the page relevant to this question.",
+     "arg": "query"
+    },
+    {
+     "name": "include_links",
+     "type": "boolean",
+     "required": false,
+     "description": "Also return every link on the page, de-duplicated.",
+     "default": false,
+     "arg": "include_links"
+    },
+    {
+     "name": "frontmatter",
+     "type": "boolean",
+     "required": false,
+     "description": "Start the Markdown with YAML front matter (title, url, description, date).",
+     "arg": "frontmatter"
+    }
+   ],
+   "content_key": "content"
+  },
+  {
+   "name": "map",
+   "collector": null,
+   "method": "map",
+   "help": "every URL of a site, from sitemaps and links",
+   "endpoint": "map",
+   "fixed": {},
+   "rows_key": "links",
+   "row_field": "url",
+   "description": "Every URL a site exposes, read from robots.txt, its sitemaps and the homepage links, without crawling it: the list plus the site-wide total and a count per section.",
+   "positional": "url",
+   "positional_is_list": false,
+   "positional_optional": false,
+   "columns": [
+    "url"
+   ],
+   "sample": "map_quanticdata",
+   "inputs": [
+    {
+     "name": "url",
+     "type": "string",
+     "required": true,
+     "description": "The site, e.g. https://quanticdata.io.",
+     "arg": "url"
+    },
+    {
+     "name": "limit",
+     "type": "integer",
+     "required": false,
+     "description": "How many URLs to return, up to 5,000 (default 100); total and summary always cover the whole site.",
+     "default": 100,
+     "arg": "limit"
+    },
+    {
+     "name": "search",
+     "type": "string",
+     "required": false,
+     "description": "Only URLs containing this text, e.g. /blog/.",
+     "arg": "search"
+    },
+    {
+     "name": "includeSubdomains",
+     "type": "boolean",
+     "required": false,
+     "default": false,
+     "description": "Include URLs on subdomains of the site.",
+     "arg": "include_subdomains"
+    },
+    {
+     "name": "sitemapOnly",
+     "type": "boolean",
+     "required": false,
+     "description": "Use only robots.txt and the sitemaps, skip the homepage links.",
+     "default": false,
+     "arg": "sitemap_only"
+    }
+   ]
+  },
+  {
+   "name": "crawl",
+   "collector": null,
+   "method": "crawl",
+   "help": "crawl a site into Markdown pages",
+   "endpoint": "crawl",
+   "fixed": {},
+   "rows_key": "pages",
+   "row_field": "value",
+   "description": "A breadth-first crawl from a start URL: every page reached is converted to Markdown, with its URL, status, title and link depth. The CLI waits for the crawl to finish.",
+   "positional": "url",
+   "positional_is_list": false,
+   "positional_optional": false,
+   "columns": [
+    "url",
+    "status",
+    "title",
+    "depth"
+   ],
+   "sample": "crawl_quanticdata_docs",
+   "inputs": [
+    {
+     "name": "url",
+     "type": "string",
+     "required": true,
+     "description": "Where the crawl starts, e.g. https://quanticdata.io/docs/.",
+     "arg": "url"
+    },
+    {
+     "name": "limit",
+     "type": "integer",
+     "required": false,
+     "description": "Maximum pages to crawl, up to 500 (default 50).",
+     "default": 50,
+     "arg": "limit"
+    },
+    {
+     "name": "depth",
+     "type": "integer",
+     "required": false,
+     "description": "How many links deep to follow from the start page, up to 10 (default 3).",
+     "default": 3,
+     "arg": "depth"
+    },
+    {
+     "name": "contentMode",
+     "type": "string",
+     "required": false,
+     "description": "smart (default), article or full, as for scrape.",
+     "enum": [
+      "smart",
+      "article",
+      "full"
+     ],
+     "default": "smart",
+     "arg": "content_mode"
+    },
+    {
+     "name": "include",
+     "type": "string[]",
+     "required": false,
+     "description": "Only crawl URLs matching these patterns, e.g. /docs/*.",
+     "arg": "include"
+    },
+    {
+     "name": "exclude",
+     "type": "string[]",
+     "required": false,
+     "description": "Skip URLs matching these patterns.",
+     "arg": "exclude"
+    },
+    {
+     "name": "country",
+     "type": "string",
+     "required": false,
+     "description": "",
+     "arg": "country"
+    }
+   ]
+  }
+ ]
+}

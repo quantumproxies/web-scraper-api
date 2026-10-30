@@ -1,0 +1,43 @@
+{
+ "input": {
+  "url": "https://quanticdata.io/docs/",
+  "limit": 3,
+  "depth": 1,
+  "contentMode": "article"
+ },
+ "response": {
+  "id": "0992c2da-f2a7-4dd6-a989-d77787647bb2",
+  "status": "completed",
+  "seed": "https://quanticdata.io/docs/",
+  "limit": 3,
+  "depth": 1,
+  "format": "markdown",
+  "pagesCrawled": 3,
+  "pages": [
+   {
+    "url": "https://quanticdata.io/docs/",
+    "status": 200,
+    "title": "API Reference | QuanticData",
+    "depth": 0,
+    "content": "-   Authentication\n-   Buy and use proxies via the API\n-   Errors and status codes\n-   Rate limits and tiers\n-   Pricing per endpoint\n-   MCP server\n-   Data API\n    -   Scrape\n        -   postScrape one URL\n    -   Search\n        -   postStructured search results\n        -   postStart a multi-page search job\n        ..."
+   },
+   {
+    "url": "https://quanticdata.io/",
+    "status": 200,
+    "title": "Proxy Networks & Web Data APIs for AI | QuanticData",
+    "depth": 1,
+    "content": "![Your app sends a request through QuanticData to five kinds of proxy exit, drawn as 3D models in blue light with their starting prices: residential $0.80/GB, mobile $2.30/GB, datacenter $0.50/GB, ISP $2.50/IP and IPv6 $0.083/GB](https://quanticdata.io/home-b/qc-hero-band-780.webp?v=ac3cee8daa)\n\n**Proxies** every ..."
+   },
+   {
+    "url": "https://quanticdata.io/docs/curl/",
+    "status": 200,
+    "title": "cURL API Examples | QuanticData",
+    "depth": 1
+   }
+  ],
+  "nextCursor": 3,
+  "hasMore": false
+ },
+ "finished_at": "2026-10-22T23:26:33Z",
+ "_note": "Real crawl of 2026-10-22; page text cut to its first lines, the third page shown without text."
+}

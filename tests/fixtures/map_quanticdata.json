@@ -1,0 +1,32 @@
+{
+ "input": {
+  "url": "https://quanticdata.io",
+  "limit": 5,
+  "search": "/collectors/"
+ },
+ "response": {
+  "url": "https://quanticdata.io/",
+  "links": [
+   "https://quanticdata.io/collectors/",
+   "https://quanticdata.io/collectors/business-directory-api/",
+   "https://quanticdata.io/collectors/docker-hub-api/",
+   "https://quanticdata.io/collectors/crates-io-api/",
+   "https://quanticdata.io/collectors/world-bank-api/"
+  ],
+  "count": 5,
+  "total": 109,
+  "summary": {
+   "/collectors": 103,
+   "/de": 2,
+   "/es": 2,
+   "/fr": 2
+  },
+  "sources": {
+   "sitemap": 109,
+   "homepage": 0
+  },
+  "durationMs": 36592
+ },
+ "finished_at": "2026-10-22T23:24:47Z",
+ "_note": "Real call of 2026-10-22."
+}

@@ -1,0 +1,37 @@
+{
+ "input": {
+  "url": "https://en.wikipedia.org/wiki/Web_scraping",
+  "format": "markdown",
+  "contentMode": "article",
+  "max_tokens": 250
+ },
+ "response": {
+  "url": "https://en.wikipedia.org/wiki/Web_scraping",
+  "finalUrl": "https://en.wikipedia.org/wiki/Web_scraping",
+  "status": 200,
+  "contentType": "text/html; charset=UTF-8",
+  "format": "markdown",
+  "title": "Web scraping - Wikipedia",
+  "metadata": {
+   "description": null,
+   "language": "en",
+   "canonical": "https://en.wikipedia.org/wiki/Web_scraping",
+   "image": null
+  },
+  "content": "For broader coverage of this topic, see [Data scraping](https://en.wikipedia.org/wiki/Data_scraping \"Data scraping\").\n\n**Web scraping**, **web harvesting**, or **web data extraction** is [data scraping](https://en.wikipedia.org/wiki/Data_scraping \"Data scraping\") used for [extracting data](https://en.wikipedia.org/wiki/Data_extraction \"Data extraction\") from [websites](https://en.wikipedia.org/wiki/Website \"Website\").[\\[1\\]](#cite_note-1) Web scraping software may directly access the [World Wide Web](https://en.wikipedia.org/wiki/World_Wide_Web \"World Wide Web\") using the [Hypertext Transfer Protocol](https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol \"Hypertext Transfer Protocol\") or a web browser.\n\n_[Content truncated to ~250 tokens — 168 more lines on the page.]_\n",
+  "bytes": 236477,
+  "durationMs": 3259,
+  "quality": {
+   "chars": 45197,
+   "tokens": 11300,
+   "words": 4303,
+   "headings": 6,
+   "tables": 0,
+   "truncated": true,
+   "returnedTokens": 232,
+   "verdict": "good"
+  }
+ },
+ "finished_at": "2026-10-22T23:24:10Z",
+ "_note": "Real call of 2026-10-22 (max_tokens 250). Response headers, transport details and the page's JSON-LD omitted; one redirect note removed from the content."
+}
